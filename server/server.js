@@ -24,9 +24,11 @@ app.get('/', (req,res) => {
     try {
         nonExistentFunction();
       } catch (error) {
-        console.error(error);
+        rollbar.error(error);
       }
 })
+
+
 
 app.get('./castle', (req,res) => {
     res.status(200).send('<h1>Welcome to my castle</h1>')
