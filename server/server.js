@@ -21,14 +21,8 @@ rollbar.log('Hello world!')
 
 app.get('/', (req,res) => {
     res.status(200).sendFile(path.join(__dirname, '../public/index.html'))
-    try {
-        nonExistentFunction();
-      } catch (error) {
-        rollbar.error(error);
-      }
+    
 })
-
-
 
 app.get('./castle', (req,res) => {
     res.status(200).send('<h1>Welcome to my castle</h1>')
@@ -36,6 +30,12 @@ app.get('./castle', (req,res) => {
 
 app.get('/profile', (req,res) => {
     res.status(200).sendFile(path.join(__dirname, '../public/profile.html'))
+    try {
+        nonExistentFunction();
+    } catch (error) {
+        rollbar.error(error);
+    };
+
 })
 
 
